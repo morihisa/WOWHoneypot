@@ -1,0 +1,23 @@
+# default port: 8080
+port=8080
+
+# default server header: Apache
+serverheader=Apache
+
+# art directory path
+artpath=./art/
+
+# WOWHoneypot logfile path
+logpath=./log/
+
+# Access logfile path
+accesslog=access_log
+
+# WOWHoneypot logfile name
+wowhoneypotlog=wowhoneypot.log
+
+
+# Syslog (Output facility: local0(16), priority: info, only tcp protocol)
+syslog_enable=False
+syslogserver=127.0.0.1
+syslogport=514

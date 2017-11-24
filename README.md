@@ -15,8 +15,8 @@ Welcome to Omotenashi Web Honeypot(WOWHoneypot)は、簡単に構築可能で、
 ## 構築方法(Ubuntu 16.04 Server 64bit)
 ```
 $ sudo ufw default DENY
-$ sudo ufw allow 80
-$ sudo ufw allow 8080
+$ sudo ufw allow 80/tcp
+$ sudo ufw allow 8080/tcp
 ※ SSH のアクセスポートも環境に合わせて追加してください。
 $ sudo ufw enable
 $ sudo vi /etc/ufw/before.rules

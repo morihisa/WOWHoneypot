@@ -53,7 +53,7 @@ $ python3 ./wowhoneypot.py
 
 ## Licence
 
-BSD License
+[BSD License](https://github.com/morihisa/WOWHoneypot/blob/master/LICENSE)
 
 ## Author
 

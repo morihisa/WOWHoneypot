@@ -29,7 +29,7 @@ COMMIT
 ———————————————————————————
 $ sudo ufw reload
 $ cd ~/
-$ git clone https://github.com/morihisa/WOWHoneypot.git
+$ git clone https://github.com/morihisa/WOWHoneypot.git wowhoneypot
 $ cd wowhoneypot
 $ python3 ./wowhoneypot.py
 ```

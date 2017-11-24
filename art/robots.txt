@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /wordpress/
+Allow: /joomla/
+Allow: /drupal/
+Allow: /blog/
+Disallow: /phpmyadmin/

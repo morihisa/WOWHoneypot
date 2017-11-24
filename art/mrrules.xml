@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mrrs version='0.2'>
+  <mrr>
+    <meta>
+      <mrrid>1001</mrrid>
+      <enable>True</enable>
+      <note>Login request sample(GET)</note>
+    </meta>
+    <trigger>
+      <method>GET</method>
+      <uri>/login</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="post.html"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1002</mrrid>
+      <enable>True</enable>
+      <note>Login request sample(POST)</note>
+    </meta>
+    <trigger>
+      <method>POST</method>
+      <uri>/login</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[login failed.]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1003</mrrid>
+      <enable>True</enable>
+      <note>HEAD method</note>
+    </meta>
+    <trigger>
+      <method>HEAD</method>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[ ]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1004</mrrid>
+      <enable>True</enable>
+      <note>OPTIONS method</note>
+    </meta>
+    <trigger>
+      <method>OPTIONS</method>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Allow</name>
+        <value><![CDATA[GET,HEAD,POST,PUT,OPTIONS,CONNECT,PROPFIND]]></value>
+      </header>
+      <body><![CDATA[ ]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1005</mrrid>
+      <enable>True</enable>
+      <note>PUT method</note>
+    </meta>
+    <trigger>
+      <method>PUT</method>
+    </trigger>
+    <response>
+      <status>201</status>
+      <body><![CDATA[file created.]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1006</mrrid>
+      <enable>True</enable>
+      <note>access to robots.txt</note>
+    </meta>
+    <trigger>
+      <uri>/robots.txt</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="robots.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1007</mrrid>
+      <enable>True</enable>
+      <note>access to phpMyAdmin</note>
+    </meta>
+    <trigger>
+      <uri>/phpMyAdmin/</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Set-Cookie</name>
+        <value>phpMyAdmin=1vbs1ar15h9a880ekmr49f4p4pvbuh89; path=/phpmyadmin/; HttpOnly</value>
+      </header>
+      <body><![CDATA[phpmyadmin]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1008</mrrid>
+      <enable>True</enable>
+      <note>command.php</note>
+    </meta>
+    <trigger>
+      <mothod>POST</mothod>
+      <uri>command.php</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[610cker]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1009</mrrid>
+      <enable>True</enable>
+      <note>Apache Struts S2-045</note>
+    </meta>
+    <trigger>
+      <header>Struts2045</header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[Struts2045]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1010</mrrid>
+      <enable>True</enable>
+      <note>Bash RCE</note>
+    </meta>
+    <trigger>
+      <header><![CDATA[echo 2014 | md5sum]]></header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[ad43fd99987a8f6a648abe05095bf52c]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1011</mrrid>
+      <enable>True</enable>
+      <note>WordPress login page</note>
+    </meta>
+    <trigger>
+      <uri>/wp-login.php</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Set-Cookie</name>
+        <value><![CDATA[wordpress_test_cookie=WP+Cookie+check; path=/]]></value>
+      </header>
+      <body filename="wp-login.html"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1012</mrrid>
+      <enable>True</enable>
+      <note>D-link DIR-645 authentication bypass</note>
+    </meta>
+    <trigger>
+      <uri>/getcfg.php</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[<service>DEVICE.ACCOUNT</service>
+<entry>
+<uid>100</uid>
+<name>admin</name>
+<usrid>100</usrid>
+<password>adminpass</password>
+<group>administrators</group>
+<description>manage</description>
+</entry>
+]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1013</mrrid>
+      <enable>True</enable>
+      <note>OS command injection(whoami)</note>
+    </meta>
+    <trigger>
+      <header>whoami</header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body>root</body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1014</mrrid>
+      <enable>True</enable>
+      <note>OS command injection(whoami)</note>
+    </meta>
+    <trigger>
+      <body>whoami</body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body>root</body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1015</mrrid>
+      <enable>True</enable>
+      <note>attempt to read password file</note>
+    </meta>
+    <trigger>
+      <header>/etc/passwd</header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="passwd.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1016</mrrid>
+      <enable>True</enable>
+      <note>attempt to read password file</note>
+    </meta>
+    <trigger>
+      <body>/etc/passwd</body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="passwd.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1017</mrrid>
+      <enable>True</enable>
+      <note>OS command injection(uname -a;w;id)</note>
+    </meta>
+    <trigger>
+      <header><![CDATA[echo 2014;uname -a;w;id;echo 2015]]></header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[2014
+Linux webserv 4.4.0-98-generic #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+ 21:52:57 up 16 days, 17:53,  1 user,  load average: 0.08, 0.06, 0.01
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root   pts/1    1.2.3.4   sun 1    1.00s  0.27s  0.02s sshd: root [priv]
+uid=0(root) gid=0(root) groups=0(root)
+2015
+]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1018</mrrid>
+      <enable>True</enable>
+      <note>OS command injection(uname -a;w;id)</note>
+    </meta>
+    <trigger>
+      <body><![CDATA[echo 2014;uname -a;w;id;echo 2015]]></body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[2014
+Linux webserv 4.4.0-98-generic #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+ 21:52:57 up 16 days, 17:53,  1 user,  load average: 0.08, 0.06, 0.01
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root   pts/1    1.2.3.4   sun 1    1.00s  0.27s  0.02s sshd: root [priv]
+uid=0(root) gid=0(root) groups=0(root)
+2015
+]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1019</mrrid>
+      <enable>True</enable>
+      <note>attempt to read password file</note>
+    </meta>
+    <trigger>
+      <uri>/etc/passwd</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="passwd.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1020</mrrid>
+      <enable>True</enable>
+      <note>Tomcat access</note>
+    </meta>
+    <trigger>
+      <method>GET</method>
+      <uri>.jsp</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value><![CDATA[Apache-Coyote/1.1]]></value>
+      </header>
+      <body>ok</body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1021</mrrid>
+      <enable>True</enable>
+      <note>Tomcat Backdoor</note>
+    </meta>
+    <trigger>
+      <method>GET</method>
+      <uri>diZPqEAuJM.jsp$</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body>42d388f8b1db997faaf7dab487f11290</body>
+      <header>
+        <name>Server</name>
+        <value><![CDATA[Apache-Coyote/1.1]]></value>
+      </header>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1022</mrrid>
+      <enable>True</enable>
+      <note>PROPFIND method</note>
+    </meta>
+    <trigger>
+      <method>PROPFIND</method>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value><![CDATA[Microsoft-IIS/7.0]]></value>
+      </header>
+      <body>ok</body>
+    </response>
+  </mrr>
+</mrrs>

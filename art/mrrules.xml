@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<mrrs version='0.2'>
+<mrrs version='1.2'>
   <mrr>
     <meta>
       <mrrid>1001</mrrid>
@@ -358,6 +358,301 @@ uid=0(root) gid=0(root) groups=0(root)
         <value><![CDATA[Microsoft-IIS/7.0]]></value>
       </header>
       <body>ok</body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1023</mrrid>
+      <enable>True</enable>
+      <note>DGN1000 setup.cgi exploit</note>
+    </meta>
+    <trigger>
+      <uri>setup.cgi</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>WWW-Authenticate</name>
+        <value>DGN1000</value>
+      </header>
+      <body>ok</body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1024</mrrid>
+      <enable>True</enable>
+      <note>D-link DIR-645 LFI</note>
+    </meta>
+    <trigger>
+      <method>POST</method>
+      <body>getcfg/DEVICE.ACCOUNT.xml</body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[<service>DEVICE.ACCOUNT</service>
+<entry>
+<uid>100</uid>
+<name>admin</name>
+<usrid>100</usrid>
+<password>adminpass</password>
+<group>administrators</group>
+<description>manage</description>
+</entry>
+]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1025</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>/invoker/readonly</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1026</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>HTTPServerILServlet</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1027</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>/axis2</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1028</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>/admin-console/</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1029</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>/jmx-console/</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1030</mrrid>
+      <enable>True</enable>
+      <note>JBoss</note>
+    </meta>
+    <trigger>
+      <uri>/jbossws/</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>X-Powered-By</name>
+        <value>Servlet/3.0; JBossAS-6</value>
+      </header>
+      <body filename="jboss.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1031</mrrid>
+      <enable>True</enable>
+      <note>Tomcat manager</note>
+    </meta>
+    <trigger>
+      <uri>/manager/status</uri>
+    </trigger>
+    <response>
+      <status>401</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>WWW-Authenticate</name>
+        <value>Basic realm="Tomcat Manager Application"</value>
+      </header>
+      <body filename="tomcat401.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1032</mrrid>
+      <enable>True</enable>
+      <note>Tomcat manager</note>
+    </meta>
+    <trigger>
+      <uri>/manager/html</uri>
+    </trigger>
+    <response>
+      <status>401</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>WWW-Authenticate</name>
+        <value>Basic realm="Tomcat Manager Application"</value>
+      </header>
+      <body filename="tomcat401.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1033</mrrid>
+      <enable>True</enable>
+      <note>Tomcat manager</note>
+    </meta>
+    <trigger>
+      <uri>/host-manager/html</uri>
+    </trigger>
+    <response>
+      <status>401</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>WWW-Authenticate</name>
+        <value>Basic realm="Tomcat Manager Application"</value>
+      </header>
+      <body filename="tomcat401.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1034</mrrid>
+      <enable>True</enable>
+      <note>Tomcat manager</note>
+    </meta>
+    <trigger>
+      <uri>/manager/</uri>
+      <header>dG9tY2F0OnBhc3N3b3JkCg==</header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <header>
+        <name>Server</name>
+        <value>Apache-Coyote/1.1</value>
+      </header>
+      <header>
+        <name>Expires</name>
+        <value>Thu, 01 Jan 1970 00:00:00 GMT</value>
+      </header>
+      <header>
+        <name>Set-Cookie</name>
+        <value>JSESSIONID=93F0540DD116537763C29FDF67102DCF</value>
+      </header>
+      <body filename="tomcat200.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1035</mrrid>
+      <enable>True</enable>
+      <note>Apache Struts S2-045</note>
+    </meta>
+    <trigger>
+      <header>echo linux--2017</header>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[linux--2017]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1036</mrrid>
+      <enable>True</enable>
+      <note>WebShell</note>
+    </meta>
+    <trigger>
+      <uri>/cmx.php</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[CMD2017]]></body>
     </response>
   </mrr>
 </mrrs>

@@ -645,7 +645,7 @@ uid=0(root) gid=0(root) groups=0(root)
     <meta>
       <mrrid>1036</mrrid>
       <enable>True</enable>
-      <note>WebShell</note>
+      <note>WebShell ref: http://www.morihi-soc.net/?p=848</note>
     </meta>
     <trigger>
       <uri>/cmx.php</uri>

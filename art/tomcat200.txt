@@ -1,0 +1,307 @@
+<html>
+<head>
+<title>/manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table cellspacing="4" border="0">
+ <tr>
+  <td colspan="2">
+   <a href="http://tomcat.apache.org/">
+    <img border="0" alt="The Tomcat Servlet/JSP Container"
+         align="left" src="/manager/images/tomcat.gif">
+   </a>
+   <a href="http://www.apache.org/">
+    <img border="0" alt="The Apache Software Foundation" align="right"
+         src="/manager/images/asf-logo.svg" style="width: 266px; height: 83px;">
+   </a>
+  </td>
+ </tr>
+</table>
+<hr size="1" noshade="noshade">
+<table cellspacing="4" border="0">
+ <tr>
+  <td class="page-title" bordercolor="#000000" align="left" nowrap>
+   <font size="+2">Tomcat Web Application Manager</font>
+  </td>
+ </tr>
+</table>
+<br>
+
+<table border="1" cellspacing="0" cellpadding="3">
+ <tr>
+  <td class="row-left" width="10%"><small><strong>Message:</strong></small>&nbsp;</td>
+  <td class="row-left"><pre>OK</pre></td>
+ </tr>
+</table>
+<br>
+
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+ <td colspan="4" class="title">Manager</td>
+</tr>
+ <tr>
+  <td class="row-left"><a href="/manager/html/list?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">List Applications</a></td>
+  <td class="row-center"><a href="/manager/../docs/html-manager-howto.html?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">HTML Manager Help</a></td>
+  <td class="row-center"><a href="/manager/../docs/manager-howto.html?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">Manager Help</a></td>
+  <td class="row-right"><a href="/manager/status?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">Server Status</a></td>
+ </tr>
+</table>
+<br>
+
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+ <td colspan="6" class="title">Applications</td>
+</tr>
+<tr>
+ <td class="header-left"><small>Path</small></td>
+ <td class="header-left"><small>Version</small></td>
+ <td class="header-center"><small>Display Name</small></td>
+ <td class="header-center"><small>Running</small></td>
+ <td class="header-left"><small>Sessions</small></td>
+ <td class="header-left"><small>Commands</small></td>
+</tr>
+<tr>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><a href="/">/</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><i>None specified</i></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small>Welcome to Tomcat</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small>true</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small><a href="/manager/html/sessions?path=/&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">0</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF">
+  &nbsp;<small>Start</small>&nbsp;
+  <form class="inline" method="POST" action="/manager/html/stop?path=/&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Stop"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/reload?path=/&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Reload"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/undeploy?path=/&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Undeploy"></small>  </form>
+ </td>
+ </tr><tr>
+ <td class="row-left" bgcolor="#FFFFFF">
+  <form method="POST" action="/manager/html/expire?path=/&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+  <small>
+  &nbsp;<input type="submit" value="Expire sessions">&nbsp;with idle &ge;&nbsp;<input type="text" name="idle" size="5" value="30">&nbsp;minutes&nbsp;
+  </small>
+  </form>
+ </td>
+</tr>
+<tr>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small><a href="/docs/">/docs</a></small></td>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small><i>None specified</i></small></td>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small>Tomcat Documentation</small></td>
+ <td class="row-center" bgcolor="#C3F3C3" rowspan="2"><small>true</small></td>
+ <td class="row-center" bgcolor="#C3F3C3" rowspan="2"><small><a href="/manager/html/sessions?path=/docs&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">0</a></small></td>
+ <td class="row-left" bgcolor="#C3F3C3">
+  &nbsp;<small>Start</small>&nbsp;
+  <form class="inline" method="POST" action="/manager/html/stop?path=/docs&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Stop"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/reload?path=/docs&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Reload"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/undeploy?path=/docs&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Undeploy"></small>  </form>
+ </td>
+ </tr><tr>
+ <td class="row-left" bgcolor="#C3F3C3">
+  <form method="POST" action="/manager/html/expire?path=/docs&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+  <small>
+  &nbsp;<input type="submit" value="Expire sessions">&nbsp;with idle &ge;&nbsp;<input type="text" name="idle" size="5" value="30">&nbsp;minutes&nbsp;
+  </small>
+  </form>
+ </td>
+</tr>
+<tr>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><a href="/examples/">/examples</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><i>None specified</i></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small>Servlet and JSP Examples</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small>true</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small><a href="/manager/html/sessions?path=/examples&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">0</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF">
+  &nbsp;<small>Start</small>&nbsp;
+  <form class="inline" method="POST" action="/manager/html/stop?path=/examples&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Stop"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/reload?path=/examples&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Reload"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/undeploy?path=/examples&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Undeploy"></small>  </form>
+ </td>
+ </tr><tr>
+ <td class="row-left" bgcolor="#FFFFFF">
+  <form method="POST" action="/manager/html/expire?path=/examples&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+  <small>
+  &nbsp;<input type="submit" value="Expire sessions">&nbsp;with idle &ge;&nbsp;<input type="text" name="idle" size="5" value="30">&nbsp;minutes&nbsp;
+  </small>
+  </form>
+ </td>
+</tr>
+<tr>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small><a href="/host-manager/">/host-manager</a></small></td>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small><i>None specified</i></small></td>
+ <td class="row-left" bgcolor="#C3F3C3" rowspan="2"><small>Tomcat Host Manager Application</small></td>
+ <td class="row-center" bgcolor="#C3F3C3" rowspan="2"><small>true</small></td>
+ <td class="row-center" bgcolor="#C3F3C3" rowspan="2"><small><a href="/manager/html/sessions?path=/host-manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">0</a></small></td>
+ <td class="row-left" bgcolor="#C3F3C3">
+  &nbsp;<small>Start</small>&nbsp;
+  <form class="inline" method="POST" action="/manager/html/stop?path=/host-manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Stop"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/reload?path=/host-manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Reload"></small>  </form>
+  <form class="inline" method="POST" action="/manager/html/undeploy?path=/host-manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">  <small><input type="submit" value="Undeploy"></small>  </form>
+ </td>
+ </tr><tr>
+ <td class="row-left" bgcolor="#C3F3C3">
+  <form method="POST" action="/manager/html/expire?path=/host-manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+  <small>
+  &nbsp;<input type="submit" value="Expire sessions">&nbsp;with idle &ge;&nbsp;<input type="text" name="idle" size="5" value="30">&nbsp;minutes&nbsp;
+  </small>
+  </form>
+ </td>
+</tr>
+<tr>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><a href="/manager/">/manager</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small><i>None specified</i></small></td>
+ <td class="row-left" bgcolor="#FFFFFF" rowspan="2"><small>Tomcat Manager Application</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small>true</small></td>
+ <td class="row-center" bgcolor="#FFFFFF" rowspan="2"><small><a href="/manager/html/sessions?path=/manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">1</a></small></td>
+ <td class="row-left" bgcolor="#FFFFFF">
+  <small>
+  &nbsp;Start&nbsp;
+  &nbsp;Stop&nbsp;
+  &nbsp;Reload&nbsp;
+  &nbsp;Undeploy&nbsp;
+  </small>
+ </td>
+</tr><tr>
+ <td class="row-left" bgcolor="#FFFFFF">
+  <form method="POST" action="/manager/html/expire?path=/manager&amp;org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+  <small>
+  &nbsp;<input type="submit" value="Expire sessions">&nbsp;with idle &ge;&nbsp;<input type="text" name="idle" size="5" value="30">&nbsp;minutes&nbsp;
+  </small>
+  </form>
+ </td>
+</tr>
+</table>
+<br>
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+ <td colspan="2" class="title">Deploy</td>
+</tr>
+<tr>
+ <td colspan="2" class="header-left"><small>Deploy directory or WAR file located on server</small></td>
+</tr>
+<tr>
+ <td colspan="2">
+<form method="post" action="/manager/html/deploy?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+<table cellspacing="0" cellpadding="3">
+<tr>
+ <td class="row-right">
+  <small>Context Path (required):</small>
+ </td>
+ <td class="row-left">
+  <input type="text" name="deployPath" size="20">
+ </td>
+</tr>
+<tr>
+ <td class="row-right">
+  <small>XML Configuration file URL:</small>
+ </td>
+ <td class="row-left">
+  <input type="text" name="deployConfig" size="20">
+ </td>
+</tr>
+<tr>
+ <td class="row-right">
+  <small>WAR or Directory URL:</small>
+ </td>
+ <td class="row-left">
+  <input type="text" name="deployWar" size="40">
+ </td>
+</tr>
+<tr>
+ <td class="row-right">
+  &nbsp;
+ </td>
+ <td class="row-left">
+  <input type="submit" value="Deploy">
+ </td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+ <td colspan="2" class="header-left"><small>WAR file to deploy</small></td>
+</tr>
+<tr>
+ <td colspan="2">
+<form method="post" action="/manager/html/upload?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29" enctype="multipart/form-data">
+<table cellspacing="0" cellpadding="3">
+<tr>
+ <td class="row-right">
+  <small>Select WAR file to upload</small>
+ </td>
+ <td class="row-left">
+  <input type="file" name="deployWar" size="40">
+ </td>
+</tr>
+<tr>
+ <td class="row-right">
+  &nbsp;
+ </td>
+ <td class="row-left">
+  <input type="submit" value="Deploy">
+ </td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<br>
+
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+ <td colspan="2" class="title">Diagnostics</td>
+</tr>
+<tr>
+ <td colspan="2" class="header-left"><small>Check to see if a web application has caused a memory leak on stop, reload or undeploy</small></td>
+</tr>
+<tr>
+ <td colspan="2">
+<form method="post" action="/manager/html/findleaks?org.apache.catalina.filters.CSRF_NONCE=ACD651F682609E4B518E80F7D018DD29">
+<table cellspacing="0" cellpadding="3">
+<tr>
+ <td class="row-left">
+  <input type="submit" value="Find leaks">
+ </td>
+ <td class="row-left">
+  <small>This diagnostic check will trigger a full garbage collection. Use it with extreme caution on production systems.</small>
+ </td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0" cellpadding="3">
+<tr>
+ <td colspan="8" class="title">Server Information</td>
+</tr>
+<tr>
+ <td class="header-center"><small>Tomcat Version</small></td>
+ <td class="header-center"><small>JVM Version</small></td>
+ <td class="header-center"><small>JVM Vendor</small></td>
+ <td class="header-center"><small>OS Name</small></td>
+ <td class="header-center"><small>OS Version</small></td>
+ <td class="header-center"><small>OS Architecture</small></td>
+ <td class="header-center"><small>Hostname</small></td>
+ <td class="header-center"><small>IP Address</small></td>
+</tr>
+<tr>
+ <td class="row-center"><small>Apache Tomcat/7.0.79</small></td>
+ <td class="row-center"><small>1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12</small></td>
+ <td class="row-center"><small>Oracle Corporation</small></td>
+ <td class="row-center"><small>Linux</small></td>
+ <td class="row-center"><small>4.4.0-87-generic</small></td>
+ <td class="row-center"><small>amd64</small></td>
+ <td class="row-center"><small>test-tomcat</small></td>
+ <td class="row-center"><small>127.0.1.1</small></td>
+</tr>
+</table>
+<br>
+
+<hr size="1" noshade="noshade">
+<center><font size="-1" color="#525D76">
+ <em>Copyright &copy; 1999-2017, Apache Software Foundation</em></font></center>
+
+</body>
+</html>

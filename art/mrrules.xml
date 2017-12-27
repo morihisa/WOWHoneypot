@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<mrrs version='1.2'>
+<mrrs version='1.3'>
   <mrr>
     <meta>
       <mrrid>1001</mrrid>
@@ -653,6 +653,77 @@ uid=0(root) gid=0(root) groups=0(root)
     <response>
       <status>200</status>
       <body><![CDATA[CMD2017]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1037</mrrid>
+      <enable>True</enable>
+      <note>WebShell ref: http://www.morihi-soc.net/?p=898</note>
+    </meta>
+    <trigger>
+      <body>pi%28%29%2A42</body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[131.94689145077]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1038</mrrid>
+      <enable>True</enable>
+      <note>WebShell ref: http://www.morihi-soc.net/?p=898</note>
+    </meta>
+    <trigger>
+      <body>ZGllKHBpKCkqNDIpOw</body>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body><![CDATA[131.94689145077]]></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1039</mrrid>
+      <enable>True</enable>
+      <note>WordPress config file access</note>
+    </meta>
+    <trigger>
+      <uri>wp-config.php</uri>
+    </trigger>
+    <response>
+      <status>200</status>
+      <body filename="wp-config.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1040</mrrid>
+      <enable>True</enable>
+      <note>Weblogic RCE CVE-2017-10271</note>
+    </meta>
+    <trigger>
+      <uri>/wls-wsat/CoordinatorPortType</uri>
+    </trigger>
+    <response>
+      <status>500</status>
+      <body filename="wls-wsat-default.txt"></body>
+    </response>
+  </mrr>
+  <mrr>
+    <meta>
+      <mrrid>1041</mrrid>
+      <enable>True</enable>
+      <note>Weblogic RCE CVE-2017-10271</note>
+    </meta>
+    <trigger>
+      <method>POST</method>
+      <uri>/wls-wsat/CoordinatorPortType</uri>
+    </trigger>
+    <response>
+      <status>500</status>
+      <body filename="wls-wsat-post.txt"></body>
     </response>
   </mrr>
 </mrrs>

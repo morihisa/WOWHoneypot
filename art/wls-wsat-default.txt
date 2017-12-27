@@ -1,0 +1,41 @@
+<html>
+<head><title>
+Web Services
+</title></head>
+<body>
+<h1>Web Services</h1>
+<table width='100%' border='1'>
+<tr>
+<td>
+Endpoint
+</td>
+<td>
+Information
+</td>
+</tr>
+<tr>
+<td>
+<table border="0"><tr><td>Service Name:</td><td>{http://schemas.xmlsoap.org/ws/2004/10/wsat}WSAT10Service</td></tr><tr><td>Port Name:</td><td>{http://schemas.xmlsoap.org/ws/2004/10/wsat}CoordinatorPortTypePort</td></tr></table>
+</td>
+<td>
+<table border="0"><tr><td>Address:</td><td>http://weblogic.localhost:7001/wls-wsat/CoordinatorPortType</td></tr><tr><td>WSDL:</td><td><a href="http://weblogic.localhost:7001/wls-wsat/CoordinatorPortType?wsdl">http://weblogic.localhost::7001/wls-wsat/CoordinatorPortType?wsdl</a></td></tr><tr><td>Implementation class:</td><td>weblogic.wsee.wstx.wsat.v10.endpoint.CoordinatorPortTypePortImpl</td></tr></table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+<script type='text/javascript'>
+ var testpageUrl = '/ws_utc';
+ var x=document.getElementsByTagName('a');
+ for (var i=0;i<x.length;i++)
+ {
+     var linkUrl = x[i].getAttribute('href');
+     if( linkUrl.toLowerCase().indexOf("?wsdl") > -1 ){
+         var link = document.createElement('span');
+         link.appendChild(document.createTextNode('Test'));
+         link.setAttribute('onClick', 'javascript:window.location.href="'+testpageUrl + '/?wsdlUrl=' + linkUrl+'"');
+         link.setAttribute('style', 'margin-left:20px; cursor:pointer; color:#19355e; text-decoration:underline');
+         link.setAttribute('style', 'margin-left:20px; cursor:pointer; color:#19355e; text-decoration:underline');
+         x[i].parentNode.appendChild(link);     }
+ }
+</script>

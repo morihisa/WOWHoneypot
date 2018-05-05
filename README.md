@@ -54,6 +54,7 @@ $ python3 ./wowhoneypot.py
 - デフォルト設定では無効化されています。利用する場合は、config.txt の「hunt_enable」をTrueに変更してください。
 - 抽出する文字列は、art ディレクトリの huntrules.txt ファイルに1行につき1つ指定してください(正規表現で指定可能)。
 - 抽出したログは、log ディレクトリの hunting.log に保存されます(\[日時\] 送信元IP 一致した文字列)。  
+---
 - hunting.log ファイルから、URL を抽出して VirusTotal へサブミットするサンプルスクリプト(chase-url.py)を公開しました。
 - chase-url.py を利用する場合、requests ライブラリが必要です($ pip install requests)。
 - 実行前に、VirusTotal API Key を取得して、chase-url.py に記載してください。

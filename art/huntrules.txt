@@ -1,0 +1,12 @@
+wget.+https?://[\w/:\.\-]+
+curl.+https?://[\w/:\.\-]+
+fetch.+https?://[\w/:\.\-]+
+java.net.URL.+https?://[\w/:\.\-]+
+urlopen.+https?://[\w/:\.\-]+
+powershell.+https?://[\w/:\.\-]+
+bitsadmin.+https?://[\w/:\.\-]+
+explorer.+https?://[\w/:\.\-]+
+certutil.+https?://[\w/:\.\-]+
+Wscript.+https?://[\w/:\.\-]+
+getstore.+https?://[\w/:\.\-]+
+HTTP.start.+https?://[\w/:\.\-]+

@@ -59,7 +59,7 @@ $ python3 ./wowhoneypot.py
 - chase-url.py を利用する場合、requests ライブラリが必要です($ pip install requests)。
 - 実行前に、VirusTotal API Key を取得して、chase-url.py に記載してください。
 - 1日や1時間に1回程度実行するといいと思います。ただし VirusTotal API の上限に引っかからないように注意してください。
-- サブミットするファイルは、*メモリへキャッシュとして保存しますが、ディスクには保存しません*。
+- サブミットするファイルは、**メモリへキャッシュとして保存しますが、ディスクには保存しません。**
 
 ## 動作テスト済み環境
 - macOS High Sierra & Python 3.6.3

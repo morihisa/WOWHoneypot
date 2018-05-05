@@ -53,6 +53,10 @@ def virustotal_check(url):
         print("response_code:{0}, permalink: {1}".format(json_response['response_code'], json_response['permalink']))
         time.sleep(15)
 
+if VIRUSTOTAL_APIKEY == '-YOUR API KEY HERE-':
+    print("[ERROR] Please replace VIRUSTOTAL_APIKEY.")
+    sys.exit(1)
+
 last_seen_id = 0
 if os.path.exists(last_seen_id_file):
     with open(last_seen_id_file, "r") as f:

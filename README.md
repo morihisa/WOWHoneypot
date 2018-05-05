@@ -54,7 +54,6 @@ $ python3 ./wowhoneypot.py
 - デフォルト設定では無効化されています。利用する場合は、config.txt の「hunt_enable」をTrueに変更してください。
 - 抽出する文字列は、art ディレクトリの huntrules.txt ファイルに1行につき1つ指定してください(正規表現で指定可能)。
 - 抽出したログは、log ディレクトリの hunting.log に保存されます(\[日時\] 送信元IP 一致した文字列)。  
-
 - hunting.log ファイルから、URL を抽出して VirusTotal へサブミットするサンプルスクリプト(chase-url.py)を公開しました。
 - chase-url.py を利用する場合、requests ライブラリが必要です($ pip install requests)。
 - 実行前に、VirusTotal API Key を取得して、chase-url.py に記載してください。
@@ -67,9 +66,9 @@ $ python3 ./wowhoneypot.py
 
 ## リリースノート
 - 2018年5月5日 WOWHoneypot Version 1.1 公開
--- 新機能：ハンティング機能を追加しました。
--- 改善：セッションタイムアウトの処理を見直しました。
--- 改善：URL にスペースが入っている場合、エラーとなっていたため、mrr 処理前に%20に変換するようにしました。
+  - 新機能：ハンティング機能を追加しました。
+  - 改善：セッションタイムアウトの処理を見直しました。
+  - 改善：URL にスペースが入っている場合、エラーとなっていたため、mrr 処理前に%20に変換するようにしました。
 - 2017年11月25日 WOWHoneypot Version 1.0 公開
 
 ## Licence

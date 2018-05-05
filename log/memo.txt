@@ -1,3 +1,4 @@
 log directory
 - access_log
-_ wowhoneypot.log
+- wowhoneypot.log
+- hunting.log

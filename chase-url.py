@@ -30,12 +30,12 @@ def virustotal_check(url):
     try:
         memory_cache = urllib.request.urlopen(url).read()
         filename = url[url.rindex("/")+1:]
-        if len(filename) == 0:
-            filename = hash
     except Exception as e:
         print("[ERROR] {0} - {1}".format(url, e))
         return None
     hash = hashlib.sha256(memory_cache).hexdigest()
+    if len(filename) == 0:
+        filename = hash
     params = {'apikey': VIRUSTOTAL_APIKEY, 'resource': hash}
 
     response = requests.get('https://www.virustotal.com/vtapi/v2/file/report', params=params, headers=headers)

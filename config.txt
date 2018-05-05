@@ -21,3 +21,7 @@ wowhoneypotlog=wowhoneypot.log
 syslog_enable=False
 syslogserver=127.0.0.1
 syslogport=514
+
+# Hunting
+hunt_enable=False
+huntlog=hunting.log

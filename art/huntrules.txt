@@ -10,3 +10,5 @@ certutil.+https?://[\w/:\.\-]+
 Wscript.+https?://[\w/:\.\-]+
 getstore.+https?://[\w/:\.\-]+
 HTTP.start.+https?://[\w/:\.\-]+
+mshta.+https?://[\w/:\.\-]+
+objXMLHTTP.+https?://[\w/:\.\-]+

@@ -13,6 +13,9 @@ logpath=./log/
 # Access logfile path
 accesslog=access_log
 
+# Access log separator
+separator=" "
+
 # WOWHoneypot logfile name
 wowhoneypotlog=wowhoneypot.log
 
@@ -25,3 +28,6 @@ syslogport=514
 # Hunting
 hunt_enable=False
 huntlog=hunting.log
+
+# for GDPR(True: replace source ip address with 0.0.0.0)
+ipmasking=False

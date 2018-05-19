@@ -21,7 +21,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from mrr_checker import parse_mrr
 from datetime import datetime, timedelta, timezone
 
-WOWHONEYPOT_VERSION = "1.1"
+WOWHONEYPOT_VERSION = "1.2"
 
 JST = timezone(timedelta(hours=+9), 'JST')
 logger = logging.getLogger('SyslogLogger')
@@ -41,6 +41,8 @@ mrrdata = {}
 mrrids = []
 timeout = 3.0
 blacklist = {}
+separator = " "
+ipmasking = False
 
 class WOWHoneypotHTTPServer(HTTPServer):
     def server_bind(self):
@@ -60,14 +62,19 @@ class WOWHoneypotRequestHandler(BaseHTTPRequestHandler):
         self.error_content_type = "text/plain"
 
     def handle_one_request(self):
-        if self.client_address[0] in blacklist and blacklist[self.client_address[0]] > 3:
-            logging_system("Access from blacklist ip({0}). denied.".format(self.client_address[0]), True, False)
+        if ipmasking == True:
+            clientip = "0.0.0.0"
+        else:
+            clientip = self.client_address[0]
+
+        if not ipmasking and clientip in blacklist and blacklist[clientip] > 3:
+            logging_system("Access from blacklist ip({0}). denied.".format(clientip), True, False)
             self.close_connection = True
             return
         try:
             (r, w, e) = select.select([self.rfile], [], [], timeout)
             if len(r) == 0:
-                errmsg = "Client({0}) data sending was too late.".format(self.client_address[0])
+                errmsg = "Client({0}) data sending was too late.".format(clientip)
                 raise socket.timeout(errmsg)
             else:
                 self.raw_requestline = self.rfile.readline(65537)
@@ -77,15 +84,20 @@ class WOWHoneypotRequestHandler(BaseHTTPRequestHandler):
 
             rrl = str(self.raw_requestline, 'iso-8859-1')
             rrl = rrl.rstrip('\r\n')
-            if rrl.endswith("HTTP/1.0") or rrl.endswith("HTTP/1.1"):
+
+            parse_request_flag = True
+            if re.match("^[A-Z]", rrl) and (rrl.endswith("HTTP/1.0") or rrl.endswith("HTTP/1.1")):
                 rrlmethod = rrl[:rrl.index(" ")]
                 rrluri = rrl[rrl.index(" ")+1:rrl.rindex(" ")].replace(" ", "%20")
+                rrluri = rrluri.replace("\"", "%22")
                 rrlversion = rrl[rrl.rindex(" ")+1:]
                 rrl2 = rrlmethod + " " + rrluri + " " + rrlversion
                 self.raw_requestline = rrl2.encode()
+            else:
+                parse_request_flag = False
 
-            if not self.parse_request():
-                errmsg = "Client({0}) data cannot parse. {1}".format(self.client_address[0], str(self.raw_requestline))
+            if not self.parse_request() or not parse_request_flag:
+                errmsg = "Client({0}) data cannot parse. {1}".format(clientip, str(self.raw_requestline))
                 raise ValueError(errmsg)
 
             body = ""
@@ -183,44 +195,47 @@ class WOWHoneypotRequestHandler(BaseHTTPRequestHandler):
                 hostname = "blank:80"
 
             request_all = self.requestline + "\n" + str(self.headers) + body
-            logging_access("[{time}] {clientip} {hostname} \"{requestline}\" {status_code} {match_result} {requestall}\n".format(  time=get_time(),
-                                                                    clientip=self.client_address[0],
+            logging_access("[{time}]{s}{clientip}{s}{hostname}{s}\"{requestline}\"{s}{status_code}{s}{match_result}{s}{requestall}\n".format(
+                                                                    time=get_time(),
+                                                                    clientip=clientip,
                                                                     hostname=hostname,
                                                                     requestline=self.requestline,
                                                                     status_code=status,
                                                                     match_result=match,
-                                                                    requestall=base64.b64encode(request_all.encode('utf-8')).decode('utf-8')
+                                                                    requestall=base64.b64encode(request_all.encode('utf-8')).decode('utf-8'),
+                                                                    s=separator
                                                                     ))
             # Hunting
-            decoded_request_all = urllib.parse.unquote(request_all)
-            for hunt_rule in hunt_rules:
-                for hit in re.findall(hunt_rule, decoded_request_all):
-                    logging_hunt("[{time}] {clientip} {hit}\n".format(    time=get_time(),
-                                                                        clientip=self.client_address[0],
-                                                                        hit=hit))
+            if hunt_enable:
+                decoded_request_all = urllib.parse.unquote(request_all)
+                for hunt_rule in hunt_rules:
+                    for hit in re.findall(hunt_rule, decoded_request_all):
+                        logging_hunt("[{time}] {clientip} {hit}\n".format(    time=get_time(),
+                                                                            clientip=clientip,
+                                                                            hit=hit))
 
         except socket.timeout as e:
             emsg = "{0}".format(e)
             if emsg == "timed out":
-                errmsg = "Session timed out. Client IP: {0}".format(self.client_address[0])
+                errmsg = "Session timed out. Client IP: {0}".format(clientip)
             else:
                 errmsg = "Request timed out: {0}".format(emsg)
             self.log_error(errmsg)
             self.close_connection = True
             logging_system(errmsg, True, False)
-            if self.client_address[0] in blacklist:
-                blacklist[self.client_address[0]] = blacklist[self.client_address[0]] + 1
+            if clientip in blacklist:
+                blacklist[clientip] = blacklist[clientip] + 1
             else:
-                blacklist[self.client_address[0]] = 1
+                blacklist[clientip] = 1
             return
         except Exception as e:
             errmsg = "Request handling Failed: {0} - {1}".format(type(e), e)
             self.close_connection = True
             logging_system(errmsg, True, False)
-            if self.client_address[0] in blacklist:
-                blacklist[self.client_address[0]] = blacklist[self.client_address[0]] + 1
+            if clientip in blacklist:
+                blacklist[clientip] = blacklist[clientip] + 1
             else:
-                blacklist[self.client_address[0]] = 1
+                blacklist[clientip] = 1
             return
 
 def logging_access(log):
@@ -280,6 +295,11 @@ def config_load():
                 logpath = line.split('=')[1].strip()
             if line.startswith("accesslog"):
                 accesslogfile_name = line.split('=')[1].strip()
+            if line.startswith("separator"):
+                global separator
+                separator = line.strip().split('=')[1].split('"')[1]
+                if len(separator) < 1:
+                    separator = " "
             if line.startswith("wowhoneypotlog"):
                 wowhoneypotlogfile_name = line.split('=')[1].strip()
             if line.startswith("syslog_enable"):
@@ -300,6 +320,12 @@ def config_load():
                     hunt_enable = False
             if line.startswith("huntlog"):
                 huntlog_name = line.split('=')[1].strip()
+            if line.startswith("ipmasking"):
+                global ipmasking
+                if line.split('=')[1].strip() == "True":
+                    ipmasking = True
+                else:
+                    ipmasking = False
 
         global accesslogfile
         accesslogfile = os.path.join(logpath, accesslogfile_name)
@@ -398,6 +424,7 @@ if __name__ == '__main__':
         sys.exit(1)
     logging_system("WOWHoneypot(version {0}) start. {1}:{2} at {3}".format(WOWHONEYPOT_VERSION, ip, port, get_time()), False, False)
     logging_system("Hunting: {0}".format(hunt_enable), False, False)
+    logging_system("IP Masking: {0}".format(ipmasking), False, False)
     myServer = WOWHoneypotHTTPServer((ip, port), WOWHoneypotRequestHandler)
     myServer.timeout = timeout
     try:

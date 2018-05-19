@@ -12,3 +12,4 @@ getstore.+https?://[\w/:\.\-]+
 HTTP.start.+https?://[\w/:\.\-]+
 mshta.+https?://[\w/:\.\-]+
 objXMLHTTP.+https?://[\w/:\.\-]+
+lwp-download.+https?://[\w/:\.\-]+

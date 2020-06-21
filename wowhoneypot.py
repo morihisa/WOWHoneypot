@@ -40,7 +40,7 @@ default_content = []
 mrrdata = {}
 mrrids = []
 timeout = 3.0
-blacklist = {}
+blocklist = {}
 separator = " "
 ipmasking = False
 
@@ -67,8 +67,8 @@ class WOWHoneypotRequestHandler(BaseHTTPRequestHandler):
         else:
             clientip = self.client_address[0]
 
-        if not ipmasking and clientip in blacklist and blacklist[clientip] > 3:
-            logging_system("Access from blacklist ip({0}). denied.".format(clientip), True, False)
+        if not ipmasking and clientip in blocklist and blocklist[clientip] > 3:
+            logging_system("Access from blocklist ip({0}). denied.".format(clientip), True, False)
             self.close_connection = True
             return
         try:
@@ -223,19 +223,19 @@ class WOWHoneypotRequestHandler(BaseHTTPRequestHandler):
             self.log_error(errmsg)
             self.close_connection = True
             logging_system(errmsg, True, False)
-            if clientip in blacklist:
-                blacklist[clientip] = blacklist[clientip] + 1
+            if clientip in blocklist:
+                blocklist[clientip] = blocklist[clientip] + 1
             else:
-                blacklist[clientip] = 1
+                blocklist[clientip] = 1
             return
         except Exception as e:
             errmsg = "Request handling Failed: {0} - {1}".format(type(e), e)
             self.close_connection = True
             logging_system(errmsg, True, False)
-            if clientip in blacklist:
-                blacklist[clientip] = blacklist[clientip] + 1
+            if clientip in blocklist:
+                blocklist[clientip] = blocklist[clientip] + 1
             else:
-                blacklist[clientip] = 1
+                blocklist[clientip] = 1
             return
 
 def logging_access(log):

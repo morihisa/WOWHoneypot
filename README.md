@@ -67,6 +67,8 @@ $ python3 ./wowhoneypot.py
 - Windows 7 SP1 & Python 3.6.3
 
 ## リリースノート
+- 2020年6月21日 WOWHoneypot Version 1.3 公開
+  - 修正：表記の一部を blocklist に変更しました。
 - 2018年5月19日 WOWHoneypot Version 1.2 公開
   - 新機能：GDPR のため、IP アドレスをマスクして保存する設定項目を追加しました(デフォルト:無効)。
   - 新機能：アクセスログを保存するときの区切り文字を設定ファイルで指定できるようにしました(デフォルト:半角スペース1個)。

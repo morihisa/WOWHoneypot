@@ -21,7 +21,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from mrr_checker import parse_mrr
 from datetime import datetime, timedelta, timezone
 
-WOWHONEYPOT_VERSION = "1.2"
+WOWHONEYPOT_VERSION = "1.3"
 
 JST = timezone(timedelta(hours=+9), 'JST')
 logger = logging.getLogger('SyslogLogger')

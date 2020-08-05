@@ -61,6 +61,27 @@ $ python3 ./wowhoneypot.py
 - 1日や1時間に1回程度実行するといいと思います。ただし VirusTotal API の上限に引っかからないように注意してください。
 - サブミットするファイルは、**メモリへキャッシュとして保存しますが、ディスクには保存しません。**
 
+## Docker
+Dockerでも利用可能です。
+
+### Build
+
+```
+$ docker build -t wowhoneypot .
+```
+
+### Run
+
+```
+$ docker run -d -p 80:8080 wowhoneypot
+```
+
+またはローカルにログファイルを保存したい場合はlogディレクトリをマウントすることも可能です。
+
+```
+$ docker run -d -v $PWD/log:/app/log -p 80:8080 wowhoneypot
+```
+
 ## 動作テスト済み環境
 - macOS High Sierra & Python 3.6.3
 - Ubuntu 16.04.3 Server 64bit & Python 3.5.2
